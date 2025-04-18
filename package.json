@@ -11,7 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "@vendia/serverless-express": "^4.12.6",
+    "cors": "^2.8.5",
     "express": "^5.1.0",
+    "mongodb": "^6.15.0",
     "mongoose": "^8.13.2"
   }
 }
