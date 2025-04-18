@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const userData = "mongodb+srv://alfredo:alfredo@sistemasescalables.s5sqk.mongodb.net/?retryWrites=true&w=majority&appName=SistemasEscalables";
+const userData = "mongodb+srv://alfredo:alfredo@sistemasescalables.s5sqk.mongodb.net/test-alfredo?retryWrites=true&w=majority&appName=SistemasEscalables";
 
 mongoose.connect(userData);
 
