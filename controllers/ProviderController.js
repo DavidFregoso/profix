@@ -1,11 +1,16 @@
-const Supplier = require("../models/supplier.model")
+const User = require("../models/user.model")
 
 
-const createSupplier = async (req, res) => {
+const createProvider = async (req, res) => {
+    // the user to turn un provider must exist
+    // you add the provider data, and change the state of isProvider
     try {
-        const { name, user, password_hash, description } = req.body;
+        const { username, category, location, description, hourlyRate } = req.body;
 
-        const newSupplier = new Supplier({
+        // Get the user that want to be a provider 
+        const currUser = User.findOne()
+
+        const newSupplier = new User({
             name, user, password_hash, description,
         })
 
@@ -27,4 +32,4 @@ const getSuppliers = async (req, res) => {
     }
 }
 
-module.exports = {createSupplier, getSuppliers}
+module.exports = { createProvider, getSuppliers}
