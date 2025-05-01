@@ -29,7 +29,11 @@ const createUser = async (req, res) => {
         delete userToReturn.password_hash;
         res.status(201).json(userToReturn)
     } catch (err) {
-        console.error()
+        if (err.code === 11000){
+            const field = Object.keys(err.keyPattern)[0];
+            res.status(400).json({message: `El ${field} ya está en uso`})
+        }
+        console.log(err)
         res.status(500).json({ message: 'Error al crear usuario'})
     }
 }

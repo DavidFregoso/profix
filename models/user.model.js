@@ -62,7 +62,9 @@ const userSchema = new Schema({
     email: {
       type: String,
       unique: true,
-      sparse: true // en caso de que algunos usuarios no tengan email
+      required: true,
+      lowercase: true,
+      trim: true,
     },
     name: { type: String, required: true },
     profilePhotoURL: { type: String, default: null },
