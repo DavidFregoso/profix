@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-
 const reviewSchema = new Schema({
     provider: {
         type: Schema.Types.ObjectId,
@@ -13,10 +12,6 @@ const reviewSchema = new Schema({
         ref: 'User',
         required: true,
     },
-    userName: {
-        type: String,
-        required: true,
-    },
     stars: {
         type: Number,
         min: 0,
@@ -26,17 +21,22 @@ const reviewSchema = new Schema({
     title: {
         type: String,
         required: true,
+        trim: true
     },
     comment: {
         type: String,
         required: true,
-    }, 
+        trim: true
+    },
     date: {
         type: Date,
         default: Date.now
     }
-})
+}, 
+// Added timestamps
+{ timestamps: true }
+);
 
-const Review = mongoose.model('Review', reviewSchema)
+const Review = mongoose.model('Review', reviewSchema);
 
 module.exports = Review;
