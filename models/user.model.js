@@ -28,22 +28,36 @@ const availabilitySchema = new Schema({
 })
 
 const providerDataSchema = new Schema({
-    category: {
-      type: Schema.Types.ObjectId,
-      ref: 'Category',
-      required: true
-    },
-    categoryName: { type: String, required: true },
-    location: { type: String, default: 'Guadalajara'},
-    description: { type: String, required: true },
-    coverPhotoURL: { type: String, default: null },
-    hourlyRate: { type: Number, required: false },
-    phoneNumber: { type: String, required: true },
-    stars: { type: Number, min: 0, max: 5,  required: true, default: 0 },
-    advertiser: { type: Boolean, default: false },
-    balance: { type: Number, default: 0 },
-    availability: [availabilitySchema],
-    jobs: [jobSchema],
+  category: {
+    type: Schema.Types.ObjectId,
+    ref: 'Category',
+    required: true
+  },
+  categoryName: { type: String, required: true },
+  location: { type: String, default: 'Guadalajara' },
+  description: { type: String, required: true },
+  coverPhotoURL: { type: String, default: null },
+  hourlyRate: { type: Number, required: false },
+  phoneNumber: { type: String, required: true },
+
+  // Equipo, para guardar reviews se hace asi: provider.stars.set("5", provider.stars.get("5") + 1);
+  stars: {
+    type: Map,
+    of: Number,
+    default: () => ({
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    })
+  },
+
+  advertiser: { type: Boolean, default: false },
+  balance: { type: Number, default: 0 },
+  availability: [availabilitySchema],
+  jobs: [jobSchema],
 }, { _id: false });
 
 
