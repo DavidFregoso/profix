@@ -12,6 +12,10 @@ const reviewSchema = new Schema({
         ref: 'User',
         required: true,
     },
+    userName: {
+        type: String,
+        required: true,
+    },
     stars: {
         type: Number,
         min: 0,

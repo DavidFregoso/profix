@@ -1,6 +1,7 @@
 const app = require('./app')
 const mongoose = require('mongoose');
 
+
 const PORT = 3000;
 const JWT_SECRET = 'hola' // Change this for env variable in lambda
 

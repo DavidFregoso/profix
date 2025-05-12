@@ -1,0 +1,104 @@
+### Registro de usuario
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+  "username": "nuevo_usuario",
+  "email": "nuevo@usuario.com",
+  "password": "contraseña123",
+  "name": "Nuevo Usuario"
+}
+
+###
+
+### Inicio de sesión (login)
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+  "email": "nuevo@usuario.com",
+  "password": "contraseña123"
+}
+
+###
+
+### Obtener perfil del usuario (con token JWT)
+GET http://localhost:5000/user/me
+Authorization: Bearer {{token}}
+
+###
+
+### Actualizar perfil del usuario (con token JWT)
+PUT http://localhost:5000/user/me
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Nuevo Nombre",
+  "email": "nuevo@usuario.com",
+  "profilePhotoURL": "http://example.com/photo.jpg",
+  "password": "nuevaContraseña123"
+}
+
+###
+
+### Crear cita (appointment) (con token JWT)
+POST http://localhost:5000/appointment/63f6dcb72d8f6b2d4e1a6e11
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "user": "63f6dcb72d8f6b2d4e1a6e12",
+  "day": "2025-05-15",
+  "startTime": "09:00",
+  "endTime": "10:00",
+  "status": "pending",
+  "comment": "Consulta de prueba"
+}
+
+###
+
+### Obtener citas de un proveedor (providerId)
+GET http://localhost:5000/appointment/63f6dcb72d8f6b2d4e1a6e11
+Authorization: Bearer {{token}}
+
+###
+
+### Crear trabajo (job) (con token JWT)
+POST http://localhost:5000/job/63f6dcb72d8f6b2d4e1a6e11
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Trabajo de reparación",
+  "description": "Reparación de electricidad",
+  "date": "2025-05-16"
+}
+
+###
+
+### Obtener trabajos de un proveedor (providerId)
+GET http://localhost:5000/job/63f6dcb72d8f6b2d4e1a6e11
+Authorization: Bearer {{token}}
+
+###
+
+### Crear reseña (review) para un proveedor (con token JWT)
+POST http://localhost:5000/review/63f6dcb72d8f6b2d4e1a6e11
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "userName": "Usuario Test",
+  "stars": 5,
+  "title": "Excelente servicio",
+  "comment": "El proveedor fue muy profesional y puntual."
+}
+
+###
+
+### Obtener reseñas de un proveedor (providerId)
+GET http://localhost:5000/review/63f6dcb72d8f6b2d4e1a6e11
+Authorization: Bearer {{token}}
+
+###
